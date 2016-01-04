@@ -42,7 +42,7 @@ To test it, in slack :
 If the bot replies PONG, the installation and configuration is successful.
 
 ##Scripting a custom feature
-
+**Note: coffee-script is indentation-sensitive. Therefore, a 2 spaces indentation has been chosen for this work.**
 To develop features for Hubot,  our scripts have to be located in /opt/chatops/scripts
 *example.coffee* should already be here to help us.
 
