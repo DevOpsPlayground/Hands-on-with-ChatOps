@@ -75,11 +75,11 @@ Our new module should look like :
 		
 		module.exports = (robot) ->
 
-	#		robot.respond /(.*)/i, (msg) ->
+			robot.respond /(.*)/i, (msg) ->
 
-	#				text = escape(msg.match[1])
+				text = escape(msg.match[1])
 
-	#				msg.send "#{text}"
+				msg.send "#{text}"
 
 
 After restarting hubot, test this new feature in slack:
