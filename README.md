@@ -1,6 +1,6 @@
 # Devops-Playground-Chatops-Intro
 
-##INSTALLATION
+##Installation
 
 ### Using a Virtual Machine
 The operations that have to be performed on the VM are :
@@ -41,7 +41,7 @@ To test it, in slack :
 	
 If the bot replies PONG, the installation and configuration is successful.
 
-##SCRIPTING
+##Scripting a custom feature
 
 Do develop features fro Hubot,  our script have to be located in /opt/chatops/scripts
 Example.coffee should already be here to help us.
