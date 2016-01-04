@@ -46,9 +46,24 @@ If the bot replies PONG, the installation and configuration is successful.
 Do develop features fro Hubot,  our script have to be located in /opt/chatops/scripts
 Example.coffee should already be here to help us.
 	`cp example.coffee playground.coffee`
+	
 ###STEP 1:
+The first feature described in the example.coffee. Uncommenting it will allow us to test it.
 
-Let's see if we can retrieve some parameters from slack.
+```
+module.exports = (robot) ->
+
+   robot.hear /badger/i, (res) ->
+   	res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+  
+```
+The "/badger/i" part of the module describes what we want the chat bot to listen to. If this keyword is found in what is said to hubot, the latter will automatically reply "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+**In the code, "badger" can be replace by any regex.**
+
+Restart hubot to test this feature.
+
+###STEP 2:
+To push the scriptiing further, let's see if we can retrieve some parameters from slack.
 Our new module should look like : 
 ```
 	# Description:
@@ -65,20 +80,25 @@ Our new module should look like :
 				msg.send "#{text}"
 ```
 
+Here, we tell the bot to retrieve all the message matching the regex (.*), which describes *everything*.
+Then the module store the data into a variable *text* `text = escape(msg.match[1])`
+Finally, the bot resend the content of the variable to slack `msg.send "#{text}"`
+
+
 After restarting hubot, test this new feature in slack:
 ```
 	you: @hubot hello
 	hubot: hello
 ```
-###STEP 2:
+###STEP 3:
 
 Now that we understand how hubot works, we will implement a more complex feature : Google Maps Distance feature.
 
 An HTTP request to this API looks like :
 	`https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key:YOUR_API_KEY`
-```
-And the response in JSON looks like :
 
+And the response in JSON looks like :
+```
 	{
 	  "destination_addresses" : [ "Paris, France" ],
 	  "origin_addresses" : [ "Londres, Royaume-Uni" ],
