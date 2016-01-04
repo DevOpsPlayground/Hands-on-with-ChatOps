@@ -11,8 +11,10 @@ The operations that have to be performed on the VM are :
 	npm --version
 	sudo npm install -g hubot coffee-script yo generator-hubot
 	sudo mkdir /opt/chatops 
+	sudo chown ubuntu /opt/chatops
 ```
-	
+
+Note : Since npm is a part of the nodejs package, `npm --version` allows us to confirm its successful installation.
 ###Using a Vagrant Box
 
 Using the Vagrantfile provided in a dedicated directory:
@@ -21,7 +23,7 @@ Using the Vagrantfile provided in a dedicated directory:
 	vagrant ssh
 ```
 	
-To generate a Hubot bot : 
+To generate a Hubot bot, we use the scaffolding tool `yo`
 	`cd /opt/chatops/ && yo hubot`
 	
 Fill in the details and specify slack as the adapter
