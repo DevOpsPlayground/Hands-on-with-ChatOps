@@ -28,6 +28,7 @@ Fill in the details and specify slack as the adapter
 Hubot is now installed.
 	
 The last step is to link it to your slack team.
+
 Get your Hubot_Slack_Token at  YourTeam.slack.com/apps
 	`export Hubot_Slack_Token=YOUR_TOKEN`
 	
@@ -74,7 +75,7 @@ After restarting hubot, test this new feature in slack:
 Now that we understand how hubot works, we will implement a more complex feature : Google Maps Distance feature.
 
 An HTTP request to this API looks like :
-	`https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&devops-key=AIzaSyBD5q-eaDPqYX835JQhbgoG5Cuk7Tc1v7E`
+	`https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key:YOUR_API_KEY`
 ```
 And the response in JSON looks like :
 
@@ -106,7 +107,7 @@ Thanks to step 1, we know how to  capture a message with a regex, and how to reu
 We want to capture an Origin city and a Destination 
 
 Beforehand, you can manually test your REST call using curl, playing with the parameters
-	`curl https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&devops-key=AIzaSyBD5q-eaDPqYX835JQhbgoG5Cuk7Tc1v7E`
+	`curl https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key=YOUR_API_KEY`
 
 Our update module will then look like this : 
 ```
@@ -122,7 +123,7 @@ Our update module will then look like this :
 		robot.respond /distance between (.*) and (.*)/i, (msg) ->
 			origin = escape(msg.match[1])
 				destination = escape(msg.match[2])
-				msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&devops-key=AIzaSyBD5q-eaDPqYX835JQhbgoG5Cuk7Tc1v7E")
+				msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
 ```
 
 OPTIONALLY you could  restart your hubot, and make sure no error is detected in your script.
