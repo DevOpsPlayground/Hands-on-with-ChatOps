@@ -1,8 +1,8 @@
 # Devops-Playground-Chatops-Intro
 
---------INSTALLATION --------
+##INSTALLATION
 
---Virtual Machine--
+###Virtual Machine
 The operations that have to be performed on the VM are :
 
 	sudo apt-get install build-essential git-core libssl-dev redis-server libexpat1-dev
@@ -16,9 +16,9 @@ The operations that have to be performed on the VM are :
 	sudo npm install -g hubot coffee-script yo generator-hubot
 	
 	sudo mkdir /opt/chatops 
--
+
 	
---Vagrant--
+###Vagrant
 
 Using the Vagrantfile provided in a dedicated directory:
 	vagrant up
@@ -46,14 +46,14 @@ To test it, in slack :
 	@hubot ping
 If the bot replies PONG, the installation and configuration is successful.
 
---------SCRIPTING--------
+##SCRIPTING
 
 Do develop features fro Hubot,  our script have to be located in /opt/chatops/scripts
 Example.coffee should already be here to help us.
 
 	cp example.coffee playground.coffee
 	
---STEP 1:--
+###STEP 1:
 
 Let's see if we can retrieve some parameters from slack.
 Our new module should look like : 
@@ -86,7 +86,7 @@ After restarting hubot, test this new feature in slack:
 	you: @hubot hello
 	hubot: hello
 
---STEP 2:--
+###STEP 2:
 
 Now that we understand how hubot works, we will implement a more complex feature : Google Maps Distance feature.
 
