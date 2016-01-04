@@ -37,6 +37,7 @@ To run Hubot :
 	
 Hubot should now be visible as an user in your slack instance.
 To test it, in slack :
+
 	`You: @hubot ping`
 	
 If the bot replies PONG, the installation and configuration is successful.
