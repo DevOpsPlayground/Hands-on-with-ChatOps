@@ -2,7 +2,7 @@
 
 ##INSTALLATION
 
-###Virtual Machine
+### Using a Virtual Machine
 The operations that have to be performed on the VM are :
 ```
 	sudo apt-get install build-essential git-core libssl-dev redis-server libexpat1-dev
@@ -13,7 +13,7 @@ The operations that have to be performed on the VM are :
 	sudo mkdir /opt/chatops 
 ```
 	
-###Vagrant
+###Using a Vagrant Box
 
 Using the Vagrantfile provided in a dedicated directory:
 ```
