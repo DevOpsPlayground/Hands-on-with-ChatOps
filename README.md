@@ -5,6 +5,7 @@ Devops Playground
 The VMs provided already include all the prerequirement needed to set up a chat bot.
 
 --------INSTALLATION --------
+
 --Virtual Machine--
 The operations already performed on the VMs are as follow: 
 
@@ -20,6 +21,7 @@ The operations already performed on the VMs are as follow:
 -
 	
 --Vagrant--
+
 Using the Vagrantfile provided in a dedicated directory:
 	vagrant up
 	vagrant ssh
@@ -47,12 +49,14 @@ To test it, in slack :
 If the bot replies PONG, the installation and configuration is successful.
 
 --------SCRIPTING--------
+
 Do develop features fro Hubot,  our script have to be located in /opt/chatops/scripts
 Example.coffee should already be here to help us.
 
 	cp example.coffee playground.coffee
 	
 --STEP 1:--
+
 Let's see if we can retrieve some parameters from slack.
 Our new module should look like : 
 	# Description:
@@ -75,6 +79,7 @@ After restarting hubot, test this new feature in slack:
 -
 
 --STEP 2:--
+
 Now that we understand how hubot works, we will implement a more complex feature : Google Maps Distance feature.
 
 An HTTP request to this API looks like : 
