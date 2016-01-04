@@ -168,8 +168,8 @@ To improve this work, you could :
 	
 	2.Catch the potential error
 	
-	3.Try to integrate with another complex API
+	3.Integrate with another more complex API
 	
-	4.Try to implement chatops into your devops practices
+	4.Implement chatops into your devops practices
 
 .
