@@ -53,9 +53,8 @@ The first feature described in the example.coffee. Uncommenting it will allow us
 
 ```
 module.exports = (robot) ->
-
-   robot.hear /badger/i, (res) ->
-   	res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+  robot.hear /badger/i, (res) ->
+    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
 ```
 The "/badger/i" part of the module describes what we want the chat bot to listen to. If this keyword is found in what is said to hubot, the latter will automatically reply "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
@@ -67,18 +66,18 @@ Restart hubot to test this feature.
 To push the scriptiing further, let's see if we can retrieve some parameters from slack.
 Our new module should look like : 
 ```
-	# Description:
-	#   Generates help commands for Hubot.
-	#
-	# Commands:
-	#   Repeat what is said to hubot
-	#
-	# Notes:
-	#   These commands are grabbed from comment blocks at the top of each file.
-		module.exports = (robot) ->
-			robot.respond /(.*)/i, (msg) ->
-				text = escape(msg.match[1])
-				msg.send "#{text}"
+# Description:
+#   Generates help commands for Hubot.
+#
+# Commands:
+#   Repeat what is said to hubot
+#
+# Notes:
+#   These commands are grabbed from comment blocks at the top of each file.
+module.exports = (robot) ->
+  robot.respond /(.*)/i, (msg) ->
+    text = escape(msg.match[1])
+    msg.send "#{text}"
 ```
 
 Here, we tell the bot to retrieve all the message matching the regex (.*), which describes *everything*.
@@ -132,30 +131,30 @@ Beforehand, you can manually test your REST call using curl, playing with the pa
 
 Our update module will then look like this : 
 ```
-	# Description:
-	#   Generates help commands for Hubot.
-	#
-	# Commands:
-	#   hubot distance between X and Y - Call Google Map API to find out time and distance between two cities..
-	#
-	# Notes:
-	#   These commands are grabbed from comment blocks at the top of each file.
-	module.exports = (robot) ->
-		robot.respond /distance between (.*) and (.*)/i, (msg) ->
-			origin = escape(msg.match[1])
-				destination = escape(msg.match[2])
-				msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
+# Description:
+#   Generates help commands for Hubot.
+#
+# Commands:
+#   hubot distance between X and Y - Call Google Map API to find out time and distance between two cities..
+#
+# Notes:
+#   These commands are grabbed from comment blocks at the top of each file.
+module.exports = (robot) ->
+  robot.respond /distance between (.*) and (.*)/i, (msg) ->
+    origin = escape(msg.match[1])
+    destination = escape(msg.match[2])
+    msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
 ```
 
 OPTIONALLY you could  restart your hubot, and make sure no error is detected in your script.
 
 
-To read and parse JSON (the API's response):
+To read and parse JSON (the API's response) the following needs to be added to `msg.http` call:
 ```
-	.get() (error, res, body) ->
-		msg.send "#{body}"
-		json=JSON.parse(body)
-		msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
+  .get() (error, res, body) ->
+    msg.send "#{body}"
+    json=JSON.parse(body)
+    msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
 ```
 	
 **Make sure to check out the full playground.coffee file in the repository.**
