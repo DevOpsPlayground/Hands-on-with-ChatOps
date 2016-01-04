@@ -159,3 +159,11 @@ To read and parse JSON (the API's response):
 	
 **Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
+
+##What to do next ?
+The previous example gave you enough knowledge to understand chatops and its basic implementation.
+To improve this work, you could :
+	-Add the transportation mode as a variable in your module
+	-Catch the potential error
+	-Try to integrate with another complex API
+	-Try to implement chatops into your devops practices
