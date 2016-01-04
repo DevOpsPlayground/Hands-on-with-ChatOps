@@ -1,13 +1,9 @@
 # Devops-Playground-Chatops-Intro
 
-Devops Playground
-
-The VMs provided already include all the prerequirement needed to set up a chat bot.
-
 --------INSTALLATION --------
 
 --Virtual Machine--
-The operations already performed on the VMs are as follow: 
+The operations that have to be performed on the VM are :
 
 	sudo apt-get install build-essential git-core libssl-dev redis-server libexpat1-dev
 
