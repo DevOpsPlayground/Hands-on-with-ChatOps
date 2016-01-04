@@ -137,5 +137,5 @@ To read and parse JSON (the API's response):
 		msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
 ```
 	
-*Make sure to check out the full playground.coffee file in the repository.*
+**Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
