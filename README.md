@@ -13,10 +13,9 @@ The operations that have to be performed on the VM are :
 	sudo mkdir /opt/chatops 
 	sudo chown ubuntu /opt/chatops
 ```
-
 Note : Since npm is a part of the nodejs package, `npm --version` allows us to confirm its successful installation.
-###Using a Vagrant Box
 
+###Using a Vagrant Box
 Using the Vagrantfile provided in a dedicated directory:
 ```
 	vagrant up
@@ -24,31 +23,31 @@ Using the Vagrantfile provided in a dedicated directory:
 ```
 	
 To generate a Hubot bot, we use the scaffolding tool `yo`
-	`cd /opt/chatops/ && yo hubot`
-	
+
+`cd /opt/chatops/ && yo hubot`
 Fill in the details and specify slack as the adapter
 Hubot is now installed.
 	
 The last step is to link it to your slack team.
 
 Get your Hubot_Slack_Token at  YourTeam.slack.com/apps
-	`export Hubot_Slack_Token=YOUR_TOKEN`
+`export Hubot_Slack_Token=YOUR_TOKEN`
 	
 To run Hubot : 
-	`/opt/chatops/bin/hubot -a slack`
+`/opt/chatops/bin/hubot -a slack`
 	
 Hubot should now be visible as an user in your slack instance.
 To test it, in slack :
-	`You: @hubot ping`
-	
+`You: @hubot ping`
 If the bot replies PONG, the installation and configuration is successful.
 
 ##Scripting a custom feature
 
-Do develop features fro Hubot,  our script have to be located in /opt/chatops/scripts
-Example.coffee should already be here to help us.
-	`cp example.coffee playground.coffee`
-	
+To develop features for Hubot,  our scripts have to be located in /opt/chatops/scripts
+*example.coffee* should already be here to help us.
+
+`cd /opt/chatops/scripts`
+`cp example.coffee playground.coffee`
 ###STEP 1:
 The first feature described in the example.coffee. Uncommenting it will allow us to test it.
 
