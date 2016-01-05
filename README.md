@@ -172,4 +172,4 @@ To improve this work, you could :
 	
 	4.Implement chatops into your devops practices
 
-.
+	5.([Read our blog post](http://www.forest-technologies.co.uk/blog/how-chatops-is-redefining-enterprise-and-open-source-devops))
