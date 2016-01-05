@@ -26,7 +26,7 @@ Using the Vagrantfile provided in a dedicated directory:
 To generate a Hubot bot, we use the scaffolding tool `yo`
 
 `cd /opt/chatops/ && yo hubot`
-Fill in the details and specify slack as the adapter
+Fill in the details and specify `slack` as the adapter
 Hubot is now installed.
 	
 The last step is to link it to your slack team.
