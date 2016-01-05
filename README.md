@@ -1,8 +1,8 @@
 # Devops-Playground-Chatops-Intro
 
 ##Installation
-
-### Using a Virtual Machine
+###Pre-requisite
+#### Using a Virtual Machine
 The operations that have to be performed on the VM are :
 ```
 	sudo apt-get install build-essential git-core libssl-dev redis-server libexpat1-dev
@@ -15,13 +15,14 @@ The operations that have to be performed on the VM are :
 ```
 Note : Since npm is a part of the nodejs package, `npm --version` allows us to confirm its successful installation.
 
-###Using a Vagrant Box
+####Using a Vagrant Box
 Using the Vagrantfile provided in a dedicated directory:
 ```
 	vagrant up
 	vagrant ssh
 ```
-	
+
+###Hubot
 To generate a Hubot bot, we use the scaffolding tool `yo`
 
 `cd /opt/chatops/ && yo hubot`
