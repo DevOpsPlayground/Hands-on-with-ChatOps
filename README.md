@@ -4,7 +4,13 @@
 ###Pre-requisite
 #### Using a Virtual Machine
 If you have been provided a VM, it will need to be imported into your Virtualization tools (VirtualBox, VMWare, etc.)
-To use the VM  ( on VirtualBox, VMWare workstation, VMWare fusion, VMWare player ) you will have to **(file>)import the .ova file**.
+To use the VM  ( on VirtualBox, VMWare workstation, VMWare fusion, VMWare player ) you will have to **(file>)import the .ova file**.  
+
+It is recommended for this to SSH into your VM, to facilitate the work. 
+On MAC OS and GNU/LINUX, no extra configuration should be needed. In Windows, port forwarding might have to be define.  
+In the case of Virtualbox, this is the rule we want :  
+
+![port-forwarding-Hubot](screenshots/port-forwarding.png?raw=true "Port Forwarding")    
 
 The operations already performed on the VM are :
 ```
