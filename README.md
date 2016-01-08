@@ -10,7 +10,7 @@ It is recommended for this to SSH into your VM, to facilitate the work.
 On MAC OS and GNU/LINUX, no extra configuration should be needed. In Windows, port forwarding might have to be define.  
 In the case of Virtualbox, this is the rule we want :  
 
-![port-forwarding-Hubot](screenshots/port-forwarding.png?raw=true "Port Forwarding")    
+![port-forwarding-Hubot](screenshots/port_forwarding.png?raw=true "Port Forwarding")    
 
 The operations already performed on the VM are :
 ```
