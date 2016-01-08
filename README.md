@@ -44,6 +44,11 @@ Fill in the details and specify `slack` as the adapter
 The last step is to link it to your slack team.
 
 Get your Hubot_Slack_Token at  YourTeamName.slack.com/apps
+![apps-hubot](screenshots/appsHubot.png?raw=true "hubot integration")  
+![Config-Hubot](screenshots/hubotConfig.png?raw=true "Config Hubot")  
+![username-Hubot](screenshots/hubot_username.png?raw=true "Username Hubot")  
+![Token-Hubot](screenshots/hubot_token.png?raw=true "Token Hubot")  
+
 `export Hubot_Slack_Token=YOUR_TOKEN`
 	
 To run Hubot : 
