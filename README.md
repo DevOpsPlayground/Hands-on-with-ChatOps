@@ -137,7 +137,7 @@ And the response in JSON looks like :
 Thanks to step 1, we know how to  capture a message with a regex, and how to reuse it as a variable.
 We want to capture an Origin city and a Destination 
 
-Beforehand, you can manually test your REST call using curl, playing with the parameters
+Beforehand, you can manually test your REST call using curl, playing with the parameters.  
 `curl -sL "https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=driving&language=fr-FR&key=YOUR_API_KEY"`
 
 Our updated module will then look like this : 
@@ -162,11 +162,11 @@ module.exports = (robot) ->
 ```
 
 This script: 
-1. Listens for a message structured like `distance between (.*) and (.*)` .
-2. Captures the content of `(*)` into the variables *origin* and *destination*.
-3. Constructs and calls the Google Map API `msg.http` using these variables
-4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`
-5. Parses it `json=JSON.parse(body)` and display the information requested nicely.
+1. Listens for a message structured like `distance between (.*) and (.*)`.  
+2. Captures the content of `(*)` into the variables *origin* and *destination*.  
+3. Constructs and calls the Google Map API `msg.http` using these variables.  
+4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`.  
+5. Parses it `json=JSON.parse(body)` and display the information requested nicely.  
 
 **Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
