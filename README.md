@@ -49,7 +49,7 @@ Get your Hubot_Slack_Token at  YourTeamName.slack.com/apps
 ![username-Hubot](screenshots/hubot_username.png?raw=true "Username Hubot")  
 ![Token-Hubot](screenshots/hubot_token.png?raw=true "Token Hubot")  
 
-`export Hubot_Slack_Token=YOUR_TOKEN`
+`export HUBOT_SLACK_TOKEN=YOUR_TOKEN`
 	
 To run Hubot : 
 `/opt/chatops/bin/hubot -a slack`
