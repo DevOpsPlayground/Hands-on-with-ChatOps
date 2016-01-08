@@ -106,7 +106,7 @@ After restarting hubot, test this new feature in slack:
 Now that we understand how hubot works, we will implement a more complex feature : Google Maps Distance feature.
 
 An HTTP request to this API looks like :
-	`https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key:YOUR_API_KEY`
+`https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key:YOUR_API_KEY`
 
 And the response in JSON looks like :
 ```
@@ -161,7 +161,7 @@ module.exports = (robot) ->
         msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
 ```
 
-This script: 
+This script:   
 1. Listens for a message structured like `distance between (.*) and (.*)`.  
 2. Captures the content of `(*)` into the variables *origin* and *destination*.  
 3. Constructs and calls the Google Map API `msg.http` using these variables.  
