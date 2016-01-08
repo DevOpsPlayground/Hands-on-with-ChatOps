@@ -70,7 +70,7 @@ module.exports = (robot) ->
   
 ```
 
-![Badger Hubot](screenshots/badger.png?raw=true "BADGER")
+![Badger Hubot](screenshots/badger.png?raw=true "BADGER")  
 
 **In the code, "badger" can be replace by any regex.**
 
@@ -171,7 +171,7 @@ This script:
 4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`.  
 5. Parses it `json=JSON.parse(body)` and display the information requested nicely.  
 
-![Distance Hubot](screenshots/distance.png?raw=true "Distance Matrix")
+![Distance Hubot](screenshots/distance.png?raw=true "Distance Matrix")  
 **Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
 
