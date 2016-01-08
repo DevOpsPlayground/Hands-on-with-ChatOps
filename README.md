@@ -27,7 +27,7 @@ Using the Vagrantfile provided in a dedicated directory:
 
 ###Slack Team
  Since Instant Messaging is the core of all this, a Slack team needs to be created.
- [Go to the Slack home page](https://slack.com/)
+ [Go to the Slack home page](https://slack.com/)  
 You will need to provide a valid email address, and choose a unique team name.
 
 Your new slack team is now reachable at YourTeamName.slack.com
@@ -40,7 +40,7 @@ Fill in the details and specify `slack` as the adapter
 **Hubot is now installed.**
 
 
-![Yo-Hubot](screenshots/yoHubot.png?raw=true "YoHubot")
+![Yo-Hubot](screenshots/yoHubot.png?raw=true "YoHubot")  
 The last step is to link it to your slack team.
 
 Get your Hubot_Slack_Token at  YourTeamName.slack.com/apps
