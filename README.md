@@ -3,7 +3,10 @@
 ##Installation
 ###Pre-requisite
 #### Using a Virtual Machine
-The operations that have to be performed on the VM are :
+If you have been provided a VM, it will need to be imported into your Virtualization tools (VirtualBox, VMWare, etc.)
+To use the VM  ( on VirtualBox, VMWare workstation, VMWare fusion, VMWare player ) you will have to **(file>)import the .ova file**.
+
+The operations already performed on the VM are :
 ```
 	sudo apt-get install build-essential git-core libssl-dev redis-server libexpat1-dev
 	curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
@@ -22,22 +25,29 @@ Using the Vagrantfile provided in a dedicated directory:
 	vagrant ssh
 ```
 
-###Hubot
-To generate a Hubot bot, we use the scaffolding tool `yo`
+###Slack Team
+ Since Instant Messaging is the core of all this, a Slack team needs to be created.
+ [Go to the Slack home page](https://slack.com/)
+You will need to provide a valid email address, and choose a unique team name.
+
+Your new slack team is now reachable at YourTeamName.slack.com
+
+###Hubot 
+In your VM, to generate a Hubot bot we use the scaffolding tool `yo`
 
 `cd /opt/chatops/ && yo hubot`
 Fill in the details and specify `slack` as the adapter
-Hubot is now installed.
+**Hubot is now installed.**
 	
 The last step is to link it to your slack team.
 
-Get your Hubot_Slack_Token at  YourTeam.slack.com/apps
+Get your Hubot_Slack_Token at  YourTeamName.slack.com/apps
 `export Hubot_Slack_Token=YOUR_TOKEN`
 	
 To run Hubot : 
 `/opt/chatops/bin/hubot -a slack`
-	
-Hubot should now be visible as an user in your slack instance.
+
+Hubot should now be online as an user in your slack instance.
 To test it, in slack :
 `You: @hubot ping`
 If the bot replies PONG, the installation and configuration is successful.
@@ -128,9 +138,9 @@ Thanks to step 1, we know how to  capture a message with a regex, and how to reu
 We want to capture an Origin city and a Destination 
 
 Beforehand, you can manually test your REST call using curl, playing with the parameters
-	`curl https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=bicycling&language=fr-FR&key=YOUR_API_KEY`
+`curl -sL "https://maps.googleapis.com/maps/api/distancematrix/json?origins=PARIS&destinations=LONDON&mode=driving&language=fr-FR&key=YOUR_API_KEY"`
 
-Our update module will then look like this : 
+Our updated module will then look like this : 
 ```
 # Description:
 #   Generates help commands for Hubot.
@@ -145,19 +155,19 @@ module.exports = (robot) ->
     origin = escape(msg.match[1])
     destination = escape(msg.match[2])
     msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
+      .get() (error, res, body) ->
+        msg.send "#{body}"
+        json=JSON.parse(body)
+        msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
 ```
 
-OPTIONALLY you could  restart your hubot, and make sure no error is detected in your script.
+This script: 
+1. Listens for a message structured like `distance between (.*) and (.*)` .
+2. Captures the content of `(*)` into the variables *origin* and *destination*.
+3. Constructs and calls the Google Map API `msg.http` using these variables
+4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`
+5. Parses it `json=JSON.parse(body)` and display the information requested nicely.
 
-
-To read and parse JSON (the API's response) the following needs to be added to `msg.http` call:
-```
-  .get() (error, res, body) ->
-    msg.send "#{body}"
-    json=JSON.parse(body)
-    msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
-```
-	
 **Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
 
@@ -173,4 +183,7 @@ To improve this work, you could :
 	
 	4.Implement chatops into your devops practices
 
-Don't forget to [read our blog post :-)](http://www.forest-technologies.co.uk/blog/how-chatops-is-redefining-enterprise-and-open-source-devops)
+##Reading Materials
+* [Hubot documentation](https://hubot.github.com/docs/)
+* [Google Maps Distance Matrix API documentation](https://developers.google.com/maps/documentation/distance-matrix/intro)
+* [Read our blog post :-)](http://www.forest-technologies.co.uk/blog/how-chatops-is-redefining-enterprise-and-open-source-devops)
