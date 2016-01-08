@@ -38,7 +38,9 @@ In your VM, to generate a Hubot bot we use the scaffolding tool `yo`
 `cd /opt/chatops/ && yo hubot`
 Fill in the details and specify `slack` as the adapter
 **Hubot is now installed.**
-	
+
+
+![Yo-Hubot](screenshots/yoHubot.png?raw=true "YoHubot")
 The last step is to link it to your slack team.
 
 Get your Hubot_Slack_Token at  YourTeamName.slack.com/apps
@@ -48,9 +50,8 @@ To run Hubot :
 `/opt/chatops/bin/hubot -a slack`
 
 Hubot should now be online as an user in your slack instance.
-To test it, in slack :
-`You: @hubot ping`
-If the bot replies PONG, the installation and configuration is successful.
+To test it, in slack :  
+![Ping-Pong Hubot](screenshots/ping.png?raw=true "PINGPONG")
 
 ##Scripting a custom feature
 **Note: coffee-script is indentation-sensitive. Therefore, a 2 spaces indentation has been chosen for this work.**
@@ -68,13 +69,15 @@ module.exports = (robot) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
 ```
-The "/badger/i" part of the module describes what we want the chat bot to listen to. If this keyword is found in what is said to hubot, the latter will automatically reply "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+![Badger Hubot](screenshots/badger.png?raw=true "BADGER")
+
 **In the code, "badger" can be replace by any regex.**
 
 Restart hubot to test this feature.
 
 ###STEP 2:
-To push the scriptiing further, let's see if we can retrieve some parameters from slack.
+To push the scripting further, let's see if we can retrieve some parameters from slack.
 Our new module should look like : 
 ```
 # Description:
@@ -168,6 +171,7 @@ This script:
 4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`.  
 5. Parses it `json=JSON.parse(body)` and display the information requested nicely.  
 
+![Distance Hubot](screenshots/distance.png?raw=true "Distance Matrix")
 **Make sure to check out the full playground.coffee file in the repository.**
 Finally, restart Hubot and try your new feature in Slack.
 
