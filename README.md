@@ -69,7 +69,7 @@ To test it, in slack :
 To develop features for Hubot,  our scripts have to be located in /opt/chatops/scripts
 *example.coffee* should already be here to help us.
 
-`cd /opt/chatops/scripts`
+`cd /opt/chatops/scripts`  
 `cp example.coffee playground.coffee`
 ###STEP 1:
 The first feature described in the example.coffee. Uncommenting it will allow us to test it.
@@ -100,14 +100,14 @@ Our new module should look like :
 # Notes:
 #   These commands are grabbed from comment blocks at the top of each file.
 module.exports = (robot) ->
-  robot.respond /(.*)/i, (msg) ->
-    text = escape(msg.match[1])
-    msg.send "#{text}"
+  robot.respond /(.*)/i, (res) ->
+    text = res.match[1]
+    res.send "#{text}"
 ```
 
 Here, we tell the bot to retrieve all the message matching the regex (.*), which describes *everything*.
-Then the module store the data into a variable *text* `text = escape(msg.match[1])`
-Finally, the bot resend the content of the variable to slack `msg.send "#{text}"`
+Then the module store the data into a variable *text* `text = res.match[1]`
+Finally, the bot resend the content of the variable to slack `res.send "#{text}"`
 
 
 After restarting hubot, test this new feature in slack:
@@ -165,21 +165,21 @@ Our updated module will then look like this :
 # Notes:
 #   These commands are grabbed from comment blocks at the top of each file.
 module.exports = (robot) ->
-  robot.respond /distance between (.*) and (.*)/i, (msg) ->
-    origin = escape(msg.match[1])
-    destination = escape(msg.match[2])
-    msg.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
+  robot.respond /distance between (.*) and (.*)/i, (res) ->
+    origin = res.match[1]
+    destination = res.match[2]
+    res.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
       .get() (error, res, body) ->
-        msg.send "#{body}"
+        res.send "#{body}"
         json=JSON.parse(body)
-        msg.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
+        res.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
 ```
 
 This script:   
 1. Listens for a message structured like `distance between (.*) and (.*)`.  
 2. Captures the content of `(*)` into the variables *origin* and *destination*.  
-3. Constructs and calls the Google Map API `msg.http` using these variables.  
-4. Gets the response JSON `.get() (error, res, body)`  and displays it `msg.send "#{body}`.  
+3. Constructs and calls the Google Map API `res.http` using these variables.  
+4. Gets the response JSON `.get() (error, res, body)`  and displays it `res.send "#{body}`.  
 5. Parses it `json=JSON.parse(body)` and display the information requested nicely.  
 
 ![Distance Hubot](screenshots/distance.png?raw=true "Distance Matrix")  
