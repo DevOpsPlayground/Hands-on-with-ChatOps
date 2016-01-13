@@ -169,7 +169,7 @@ module.exports = (robot) ->
     origin = res.match[1]
     destination = res.match[2]
     res.http("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&mode=bicycling&language=en-GB&key=YOUR_API_KEY")
-      .get() (error, res, body) ->
+      .get() (error, resp, body) ->
         res.send "#{body}"
         json=JSON.parse(body)
         res.send "Between #{json.origin_addresses} and #{json.destination_addresses} \n Distance: 	#{json.rows[0].elements[0].distance.text}\n Duration: #{json.rows[0].elements[0].duration.text}\n"
